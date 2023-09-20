@@ -3,10 +3,6 @@ import random
 
 print("Welcome to Spaceman!")
 
-
-
-
-
 def load_word():
     # '''
     # A function that reads a text file of words and randomly selects one to use as the secret word
@@ -19,14 +15,14 @@ def load_word():
     words_list = f.readlines()
     f.close()
     
-    # words_list = words_list[0].split(' ') #comment this line out if you use a words.txt file with each word on a new line
+    words_list = words_list[0].split(' ') #comment this line out if you use a words.txt file with each word on a new line
     secret_word = random.choice(words_list)
-    secret_word_length = len(secret_word)
+    # secret_word_length = len(secret_word)
     return secret_word
 
 stored_secret_word = load_word()
 secret_word_lenth = len(stored_secret_word)
-print(f'The secret word contains {secret_word_lenth} letters')
+print(f'The secret word contains {secret_word_lenth} letters', stored_secret_word)
 
 def is_word_guessed(secret_word, letters_guessed):
     # '''
