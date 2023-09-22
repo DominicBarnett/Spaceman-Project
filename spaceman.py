@@ -23,6 +23,8 @@ def load_word():
 stored_secret_word = load_word()
 secret_word_lenth = len(stored_secret_word)
 print(f'The secret word contains {secret_word_lenth} letters', stored_secret_word)
+# print(f"You have {incorrect_guess_count} guesses, please enter 1 letter per round")
+print("-------------------------------------------------------")
 
 def is_word_guessed(secret_word, letters_guessed):
     # '''
@@ -54,8 +56,9 @@ def get_guessed_word(secret_word, letters_guessed):
 
     pass
 
+guess = input("Please input only one letter from the english alphabet >")
 
-def is_guess_in_word(guess, secret_word):
+def is_guess_in_word(guess, stored_secret_word):
     # '''
     # A function to check if the guessed letter is in the secret word
 
@@ -68,12 +71,16 @@ def is_guess_in_word(guess, secret_word):
 
     # '''
     #TODO: check if the letter guess is in the secret word
+    
+    
+    if guess in stored_secret_word == True:
+        print("Correct")
 
-    pass
 
+    # pass
 
-
-
+# input(is_guess_in_word)
+is_guess_in_word(guess, stored_secret_word)
 def spaceman(secret_word):
     # '''
     # A function that controls the game of spaceman. Will start spaceman in the command line.
@@ -89,7 +96,7 @@ def spaceman(secret_word):
     #TODO: Ask the player to guess one letter per round and check that it is only one letter
 
     #TODO: Check if the guessed letter is in the secret or not and give the player feedback
-
+    
     #TODO: show the guessed word so far
 
     #TODO: check if the game has been won or lost
