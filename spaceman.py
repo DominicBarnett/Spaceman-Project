@@ -82,7 +82,7 @@ def spaceman(secret_word):
     print("-------------------------------------------------------")
     allowed_fails = 7
     
-    while game_over == False and allowed_fails > 0:
+    while game_over == False:
 
         #TODO: Ask the player to guess one letter per round and check that it is only one letter
         guess = input("Enter a letter: ")
@@ -111,7 +111,11 @@ def spaceman(secret_word):
             game_over = True
             return game_over
         elif allowed_fails == 0:
-            print("Game over, You lose")
+            print("Sorry your guess was not in the word, try again")
+            print("Sorry you didn't win, try again!")
+            print(f"The word was: {secret_word}")
+            game_over = True
+            return game_over
         else:
             allowed_fails -= 1  
             print("Sorry your guess was not in the word, try again")
