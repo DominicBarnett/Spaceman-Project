@@ -64,7 +64,7 @@ def spaceman(secret_word):
       secret_word (string): the secret word to guess.
 
     '''
-    alphabet_list = ["abcdefghijklmnopqrstuvwxyz"]
+    alphabet_list = ["a","b","c","d","e","f","g","h","i","j","k","l","m","n","o","p","q","r","s","t","u","v","w","x","y","z"]
     secret_word_list = []
     guessed_letters_list = []
 
@@ -73,6 +73,7 @@ def spaceman(secret_word):
         secret_word_list.append(letter)
         guessed_letters_list.append("_")
     
+
     game_over = False
     
     print("Welcome to Spaceman!")
@@ -85,7 +86,17 @@ def spaceman(secret_word):
 
         #TODO: Ask the player to guess one letter per round and check that it is only one letter
         guess = input("Enter a letter: ")
-       
+        
+        if len(guess) > 1:
+            print("please enter only one letter")
+            print("-------------------------------------------------------")
+        if guess.isalpha():
+            try:
+                alphabet_list.remove(guess)
+            except ValueError:
+                guess = input("Enter a letter: ")
+            pass
+    
         
         letter_in_word = is_guess_in_word(guess, secret_word_list)
         
