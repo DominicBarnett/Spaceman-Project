@@ -40,10 +40,6 @@ def is_guess_in_word(guess, secret_word_list):
 
     return False
 
-
-
-
-
 def list_to_string(list):
     str = ""
     for letter in list:
@@ -77,7 +73,7 @@ def spaceman(secret_word):
     game_over = False
     
     print("Welcome to Spaceman!")
-    print(f'The secret word contains: {len(secret_word_list)} letters', list_to_string(secret_word_list))
+    print(f'The secret word contains: {len(secret_word_list)} letters')
     print("You have 7 incorrect guesses, please enter one letter per round")
     print("-------------------------------------------------------")
     allowed_fails = 7
@@ -99,23 +95,13 @@ def spaceman(secret_word):
     
         
         letter_in_word = is_guess_in_word(guess, secret_word_list)
-        
+
         if letter_in_word:
             print("Your guess appears in the word!")
-            print(f"Guessed word so far: {list_to_string(guessed_letters_list)} ")
             add_guessed_letters(guess, guessed_letters_list, secret_word_list)
+            print(f"Guessed word so far: {list_to_string(guessed_letters_list)} ")
             print(f"These letters haven't been guessed yet: {list_to_string(alphabet_list)}")
             print("-------------------------------------------------------")
-        elif secret_word_list == guessed_letters_list:
-            print('Congrats You win!!')
-            game_over = True
-            return game_over
-        elif allowed_fails == 0:
-            print("Sorry your guess was not in the word, try again")
-            print("Sorry you didn't win, try again!")
-            print(f"The word was: {secret_word}")
-            game_over = True
-            return game_over
         else:
             allowed_fails -= 1  
             print("Sorry your guess was not in the word, try again")
@@ -124,16 +110,17 @@ def spaceman(secret_word):
             print(f"These letters haven't been guessed yet: {list_to_string(alphabet_list)}")
             print("-------------------------------------------------------")
 
-        
-
+        if secret_word_list == guessed_letters_list:
             
-        #TODO: check if the game has been won or lost
+            print('Congrats You win!!')
+            game_over = True
+            return game_over
 
-
-
- #TODO: check that guess is only one character
-
-
-#These function calls that will start the game
-
+        if allowed_fails == 0:
+            print("Sorry your guess was not in the word, try again")
+            print("Sorry you didn't win, try again!")
+            print(f"The word was: {secret_word}")
+            game_over = True
+            return game_over
+        
 spaceman(secret_word)
